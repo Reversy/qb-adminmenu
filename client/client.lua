@@ -4,17 +4,17 @@ local kickreason = 'Unknown'
 
 local menu = MenuV:CreateMenu(false, 'Admin Menu', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test')
 local menu2 = MenuV:CreateMenu(false, 'Admin Options', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test1')
-local menu4 = MenuV:CreateMenu(false, 'Online Players', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test3')
-local menu5 = MenuV:CreateMenu(false, 'Manage Server', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test4')
-local menu6 = MenuV:CreateMenu(false, 'Available Weather Options', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test5')
-local menu7 = MenuV:CreateMenu(false, 'Dealer List', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test6')
+local menu4 = MenuV:CreateMenu(false, 'Joueurs en ligne', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test3')
+local menu5 = MenuV:CreateMenu(false, 'Gestion serveur', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test4')
+local menu6 = MenuV:CreateMenu(false, 'Météo', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test5')
+local menu7 = MenuV:CreateMenu(false, 'Liste Dealer', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test6')
 local menu8 = MenuV:CreateMenu(false, 'Ban', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test7')
 local menu9 = MenuV:CreateMenu(false, 'Kick', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test8')
 local menu10 = MenuV:CreateMenu(false, 'Permissions', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test9')
 local menu11 = MenuV:CreateMenu(false, 'Developer Options', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test10')
-local menu12 = MenuV:CreateMenu(false, 'Vehicle Options', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test11')
-local menu13 = MenuV:CreateMenu(false, 'Vehicle Categories', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test12')
-local menu14 = MenuV:CreateMenu(false, 'Vehicle Models', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test13')
+local menu12 = MenuV:CreateMenu(false, 'Véhicule Options', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test11')
+local menu13 = MenuV:CreateMenu(false, 'Véhicule Categories', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test12')
+local menu14 = MenuV:CreateMenu(false, 'Véhicule Models', 'topright', 220, 20, 60, 'size-125', 'none', 'menuv', 'test13')
 
 RegisterNetEvent('qb-admin:client:openMenu')
 AddEventHandler('qb-admin:client:openMenu', function()
@@ -29,25 +29,25 @@ local menu_button = menu:AddButton({
 })
 local menu_button2 = menu:AddButton({
     icon = '🙍‍♂️',
-    label = 'Player Management',
+    label = 'Gestion des joueurs',
     value = menu4,
     description = 'View List Of Players'
 })
 local menu_button3 = menu:AddButton({
     icon = '🎮',
-    label = 'Server Management',
+    label = 'Gestion serveur',
     value = menu5,
     description = 'Misc. Server Options'
 })
 local menu_button21 = menu:AddButton({
     icon = '🚗',
-    label = 'Vehicles',
+    label = 'Véhicules',
     value = menu12,
     description = 'Vehicle Options'
 })
 local menu_button4 = menu:AddButton({
     icon = '💊',
-    label = 'Dealer List',
+    label = 'Liste Dealer',
     value = menu7,
     description = 'List of Existing Dealers'
 })
@@ -77,13 +77,13 @@ local menu_button8 = menu2:AddCheckbox({
 })
 local menu_button11 = menu5:AddButton({
     icon = '🌡️',
-    label = 'Weather Options',
+    label = 'Météo',
     value = menu6,
     description = 'Change The Weather'
 })
 local menu_button13 = menu5:AddSlider({
     icon = '⏲️',
-    label = 'Server Time',
+    label = 'Heure serveur',
     value = GetClockHours(),
     values = {{
         label = '00',
@@ -283,7 +283,7 @@ menu_button11:On("select",function()
         local menu_button14 = menu6:AddButton({icon = v.icon,label = v.label,value = v,description = v.description,select = function(btn)
             local selection = btn.Value
             TriggerServerEvent('qb-weathersync:server:setWeather', selection.value)
-            QBCore.Functions.Notify('Weather Changed To: '..selection.label)
+            QBCore.Functions.Notify('Météo changé en: '..selection.label)
         end})
     end
 end)
